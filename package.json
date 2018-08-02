@@ -9,7 +9,10 @@
     "crawler"
   ],
   "main": "lib/fundcrawler",
-  "dependencies": {},
+  "dependencies": {
+    "crawler": "^1.1.4",
+    "github-db": "^1.1.3"
+  },
   "devDependencies": {},
   "peerDependencies": {},
   "optionalDependencies": {},
