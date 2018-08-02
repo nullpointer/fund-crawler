@@ -1,0 +1,27 @@
+{
+  "name": "fundcrawler",
+  "version": "1.0.0",
+  "description": "Crawler for fund based on nodejs",
+  "license": "Apache-2.0",
+  "author": " <duanqz@gmail.com> (duanqz)",
+  "keywords": [
+    "fund",
+    "crawler"
+  ],
+  "main": "lib/fundcrawler",
+  "dependencies": {},
+  "devDependencies": {},
+  "peerDependencies": {},
+  "optionalDependencies": {},
+  "homepage": "https://github.com/nullpointer/fundcrawler",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nullpointer/fundcrawler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nullpointer/fundcrawler/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
