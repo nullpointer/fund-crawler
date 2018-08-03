@@ -13,7 +13,9 @@
     "crawler": "^1.1.4",
     "github-db": "^1.1.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^3.0.1"
+  },
   "peerDependencies": {},
   "optionalDependencies": {},
   "homepage": "https://github.com/nullpointer/fundcrawler",
