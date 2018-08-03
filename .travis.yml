@@ -5,7 +5,7 @@ branches:
   only:
     - master
 script:
-  - npm test
+  - npm run build:ts
 compiler: clang-4.0
 env:
   global:
