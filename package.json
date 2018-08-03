@@ -1,5 +1,5 @@
 {
-  "name": "fundcrawler",
+  "name": "@nullpointer/fundcrawler",
   "version": "1.0.0",
   "description": "Crawler for fund based on nodejs",
   "license": "Apache-2.0",
@@ -8,7 +8,7 @@
     "fund",
     "crawler"
   ],
-  "main": "lib/fundcrawler",
+  "main": "release/main.js",
   "dependencies": {
     "crawler": "^1.1.4",
     "github-db": "^1.1.3"
@@ -27,6 +27,7 @@
     "url": "https://github.com/nullpointer/fundcrawler/issues"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:ts": "tsc",
+    "clean": "rimraf dist"
   }
 }
