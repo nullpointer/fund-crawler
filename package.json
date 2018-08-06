@@ -8,15 +8,12 @@
     "fund",
     "crawler"
   ],
-  "main": "release/main.js",
+  "main": "src/main.js",
   "dependencies": {
     "crawler": "^1.1.4",
     "github-db": "^1.1.3"
   },
-  "devDependencies": {
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.1"
-  },
+  "devDependencies": {},
   "peerDependencies": {},
   "optionalDependencies": {},
   "homepage": "https://github.com/nullpointer/fundcrawler",
@@ -28,8 +25,6 @@
     "url": "https://github.com/nullpointer/fundcrawler/issues"
   },
   "scripts": {
-    "build:ts": "tsc",
-    "clean": "rimraf dist",
-    "lint": "tslint --project ."
+    "start": "node src/main.js"
   }
 }
