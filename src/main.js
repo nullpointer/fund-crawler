@@ -1,7 +1,8 @@
 
 const Crawler = require('crawler');
 const fs = require('fs');
-var GithubDB = require('..').default;
+const GithubDB = require('../node_modules/github-db/dist/githubdb').default
+
 
 function parse(data) {
     const start = data.indexOf('{');
@@ -48,18 +49,18 @@ function writeOutput(funds) {
     });
 }
 
-function writeGithubdb() {
+function writeGithubdb(funds) {
     const options = {
-        user: 'duanqz', // <-- Your Github username
+        owner: 'duanqz', // <-- Your Github username
         repo: 'fundcrawler-result', // <-- Your repository to be used a db
-        remoteFilename: 'filename-with-extension.json' // <- File with extension .json
+        path: 'out.json' // <- File with extension .json
     };
 
     const githubDB = new GithubDB(options);
 
-    githubDB.auth('5f4d3cc019ac93dd32359e9d698fbffb13307627');
+    githubDB.auth('c905262430ac932f1e79cc573981835ac82525e4');
     githubDB.connectToRepo();
-    githubDB.save({"message": "wooohoo"});
+    githubDB.save(funds);
 }
 
 const c = new Crawler({
@@ -71,7 +72,7 @@ const c = new Crawler({
         } else {
             const funds = parse(res.body);
             writeOutput(funds);
-            writeGithubdb();
+            writeGithubdb(funds);
         }
         done();
     }
