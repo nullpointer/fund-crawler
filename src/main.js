@@ -57,9 +57,13 @@ function writeGithubdb(funds) {
     };
 
     const githubDB = new GithubDB(options);
-    githubDB.auth(process.env.TOKEN);
+    githubDB.auth(reverse(process.env.TOKEN));
     githubDB.connectToRepo();
     githubDB.save(funds);
+}
+
+function reverse(str) {
+    return str.split("").reverse().join("")
 }
 
 const c = new Crawler({
