@@ -58,7 +58,7 @@ function writeGithubdb(funds) {
 
     const githubDB = new GithubDB(options);
 
-    githubDB.auth('fdfca0bf71f59011a89e21699b1a7d6be1994add');
+    githubDB.auth('7a4fcf10afcdb6cd3373ab7d40e1c2bfb82b23fa');
     githubDB.connectToRepo();
     githubDB.save(funds);
 }
