@@ -9,5 +9,5 @@ Crawler for fund based on nodejs
 ## Install via [npm](https://npmjs.com)
 
 ```sh
-$ npm install --save fundcrawler
+$ npm install --save @nullpointer/fund-crawler
 ```
