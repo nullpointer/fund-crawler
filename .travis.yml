@@ -6,18 +6,8 @@ branches:
     - master
 script:
   - npm start
-compiler: clang-4.0
 env:
   global:
-    - CCACHE_TEMPDIR=/tmp/.ccache-temp
-    - CCACHE_COMPRESS=1
-    - CC="clang"
-    - CXX="clang++"
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - libstdc++-5-dev
+    - TOKEN="6d578d193ce3297faa013aa96b285356763aaf17"
 notifications:
   email: false
