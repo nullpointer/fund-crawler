@@ -51,8 +51,8 @@ function writeOutput(funds) {
 
 function writeGithubdb(funds) {
     const options = {
-        owner: 'duanqz', // <-- Your Github username
-        repo: 'fundcrawler-result', // <-- Your repository to be used a db
+        owner: 'nullpointer', // <-- Your Github username
+        repo: 'fund-data', // <-- Your repository to be used a db
         path: 'out.json' // <- File with extension .json
     };
 
