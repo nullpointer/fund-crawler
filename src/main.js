@@ -1,19 +1,6 @@
 
-const Crawler = require("crawler");
-
-const c = new Crawler({
-    maxConnections : 10,
-    // This will be called for each crawled page
-    callback : function (error, res, done) {
-        if (error) {
-            console.error(error);
-        } else {
-            parse(res.body)
-        }
-        done();
-    }
-});
-
+const Crawler = require('crawler');
+const fs = require('fs');
 
 function parse(data) {
     const start = data.indexOf('{');
@@ -45,8 +32,34 @@ function parse(data) {
             fundItems.push(fundItem);
         }
     }
-    console.log(fundItems);
+
+    return fundItems;
+
 }
+
+function writeOutput(funds) {
+    fs.writeFile('out.json', JSON.stringify(funds), 'utf-8', function(err) {
+        if (err) {
+            console.error('Failed to write out.json');
+        } else {
+            console.info('Succeed to write out.json');
+        }
+    });
+}
+
+const c = new Crawler({
+    maxConnections : 10,
+    // This will be called for each crawled page
+    callback : function (error, res, done) {
+        if (error) {
+            console.error(error);
+        } else {
+            const funds = parse(res.body);
+            writeOutput(funds);
+        }
+        done();
+    }
+});
 
 
 // Queue just one URL, with default callback
