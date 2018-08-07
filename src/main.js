@@ -1,6 +1,7 @@
 
 const Crawler = require('crawler');
 const fs = require('fs');
+var GithubDB = require('..').default;
 
 function parse(data) {
     const start = data.indexOf('{');
@@ -47,6 +48,20 @@ function writeOutput(funds) {
     });
 }
 
+function writeGithubdb() {
+    const options = {
+        user: 'duanqz', // <-- Your Github username
+        repo: 'fundcrawler-result', // <-- Your repository to be used a db
+        remoteFilename: 'filename-with-extension.json' // <- File with extension .json
+    };
+
+    const githubDB = new GithubDB(options);
+
+    githubDB.auth('5f4d3cc019ac93dd32359e9d698fbffb13307627');
+    githubDB.connectToRepo();
+    githubDB.save({"message": "wooohoo"});
+}
+
 const c = new Crawler({
     maxConnections : 10,
     // This will be called for each crawled page
@@ -56,6 +71,7 @@ const c = new Crawler({
         } else {
             const funds = parse(res.body);
             writeOutput(funds);
+            writeGithubdb();
         }
         done();
     }
