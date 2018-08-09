@@ -1,7 +1,7 @@
 
-const Crawler = require('crawler');
 const fs = require('fs');
-const GithubDB = require('../node_modules/github-db/dist/githubdb').default
+const Crawler = require('./crawler/crawler');
+const GithubDB = require('./githubdb/githubdb').default
 
 
 function parse(data) {

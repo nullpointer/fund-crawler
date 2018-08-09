@@ -10,10 +10,30 @@
   ],
   "main": "src/main.js",
   "dependencies": {
-    "crawler": "^1.1.4",
-    "github-db": "^1.1.3"
+    "bluebird": "^3.5.0",
+    "bottleneckp": "~1.1.3",
+    "chalk": "^0.4.0",
+    "charset-parser": "^0.2.0",
+    "cheerio": "^0.22.0",
+    "github": "^9.2.0",
+    "iconv-lite": "^0.4.8",
+    "lodash": "^4.17.10",
+    "merge": "^1.1.3",
+    "request": "~2.87.0",
+    "seenreq": "^1.0.2",
+    "type-is": "^1.6.14",
+    "uuid": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "jsdom": "^9.6.0",
+    "mocha": "^5.2.0",
+    "mocha-testdata": "^1.1.0",
+    "nock": "^9.2.6",
+    "sinon": "^1.14.1",
+    "typescript": "^3.0.1",
+    "whacko": "^0.19.1"
+  },
   "peerDependencies": {},
   "optionalDependencies": {},
   "homepage": "https://github.com/nullpointer/fundcrawler",
@@ -25,6 +45,7 @@
     "url": "https://github.com/nullpointer/fundcrawler/issues"
   },
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "build:ts": "tsc"
   }
 }
