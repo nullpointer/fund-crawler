@@ -424,7 +424,7 @@ var Githubdb = function () {
 // NOTE: event name is camelCase as per node convention
 
 
-exports.default = Githubdb;
+module.exports = Githubdb;
 process.on('unhandledRejection', function (reason, promise) {
   if (promise) {
     //console.log(e(JSON.stringify(promise)));
