@@ -1,7 +1,7 @@
 
 const fs = require('fs');
-const Crawler = require('./crawler/crawler');
-const GithubDB = require('./githubdb/githubdb');
+const Crawler = require('./crawler');
+const GithubDB = require('./githubdb');
 
 function parse(data) {
     const start = data.indexOf('{');

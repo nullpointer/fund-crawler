@@ -32,7 +32,6 @@
     "mocha-testdata": "^1.1.0",
     "nock": "^9.2.6",
     "sinon": "^1.14.1",
-    "typescript": "^3.0.1",
     "whacko": "^0.19.1"
   },
   "peerDependencies": {},
