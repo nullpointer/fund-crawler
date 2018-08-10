@@ -1,5 +1,4 @@
 
-const fs = require('fs');
 const Crawler = require('./crawler');
 const GithubDB = require('./githubdb');
 
