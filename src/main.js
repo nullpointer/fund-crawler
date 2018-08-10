@@ -38,16 +38,6 @@ function parse(data) {
 
 }
 
-function writeOutput(funds) {
-    fs.writeFile('out.json', JSON.stringify(funds), 'utf-8', function(err) {
-        if (err) {
-            console.error('Failed to write out.json');
-        } else {
-            console.info('Succeed to write out.json');
-        }
-    });
-}
-
 function writeGithubdb(funds) {
     const options = {
         owner: 'nullpointer', // <-- Your Github username
@@ -73,7 +63,6 @@ const c = new Crawler({
             console.error(error);
         } else {
             const funds = parse(res.body);
-            writeOutput(funds);
             writeGithubdb(funds);
         }
         done();
