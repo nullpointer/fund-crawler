@@ -86,7 +86,7 @@ var getCurrentFile = function getCurrentFile(options) {
       repo: options.repo,
       path: options.path
     }).then(function (res) {
-      console.log((0, _chalk.green)('File located: ' + options.path));
+      console.log((0, _chalk.green)('√ File located: ' + options.path));
       resolve(res.data);
     }).catch(function (err) {
       reject(err);
@@ -138,7 +138,7 @@ var Githubdb = function () {
       try {
         return JSON.parse(content);
       } catch (err) {
-        console.log((0, _chalk.red)('Not a valid object'));
+        console.log((0, _chalk.red)('× Not a valid object'));
       }
       return [];
     }
@@ -163,7 +163,7 @@ var Githubdb = function () {
           content: encode(collection),
           sha: sha
         }).then(function (res) {
-          console.log((0, _chalk.green)('File updated successfully'));
+          console.log((0, _chalk.green)('√ File updated: ' + _this.options.path));
           resolve(res.data);
         });
       });
@@ -177,14 +177,14 @@ var Githubdb = function () {
     key: 'auth',
     value: function auth(token) {
       if (!token) {
-        console.log((0, _chalk.red)('\nMissing Personal access token!'));
+        console.log((0, _chalk.red)('\n × Missing Personal access token!'));
         return false;
       }
       github.authenticate({
         type: 'token',
         token: token
       });
-      console.log((0, _chalk.green)('User has been authenticated successfully!'));
+      console.log((0, _chalk.green)('√ User has been authenticated successfully!'));
       return true;
     }
 
@@ -202,7 +202,7 @@ var Githubdb = function () {
           owner: _this2.options.owner,
           repo: _this2.options.repo
         }).then(function (res) {
-          console.log((0, _chalk.green)('Connected to cloud file database.'));
+          console.log((0, _chalk.green)('√ Connected to cloud file database.'));
           resolve(res.data);
         });
       });
@@ -429,7 +429,7 @@ var Githubdb = function () {
           if (err) {
             reject(err);
           } else {
-            console.log((0, _chalk.green)('New file created: ' + _this10.options.path));
+            console.log((0, _chalk.green)('√ New file created: ' + _this10.options.path));
             resolve(result);
           }
         });
