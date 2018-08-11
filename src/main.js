@@ -1,6 +1,7 @@
 
 const Crawler = require('./crawler');
 const GithubDB = require('./githubdb');
+const DateFormat = require('dateformat');
 
 function parse(data) {
     const start = data.indexOf('{');
@@ -38,16 +39,22 @@ function parse(data) {
 }
 
 function writeGithubdb(funds) {
+    const filepath = DateFormat(new Date(), 'yyyy-mm-dd') + '.json';
+
     const options = {
-        owner: 'nullpointer', // <-- Your Github username
-        repo: 'fund-data', // <-- Your repository to be used a db
-        path: 'out.json' // <- File with extension .json
+        owner: 'nullpointer',
+        repo: 'fund-data',
+        path: filepath
     };
 
     const githubDB = new GithubDB(options);
     githubDB.auth(reverse(process.env.TOKEN));
     githubDB.connectToRepo();
-    githubDB.save(funds);
+    githubDB.createFile().then(function () {
+        githubDB.save(funds);
+    }).catch(function () {
+        githubDB.save(funds);
+    });;
 }
 
 function reverse(str) {

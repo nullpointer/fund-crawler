@@ -13,13 +13,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
     Object.defineProperty(target, descriptor.key, descriptor);
 } } return function (Constructor, protoProps, staticProps) { if (protoProps)
     defineProperties(Constructor.prototype, protoProps); if (staticProps)
-    defineProperties(Constructor, staticProps); return Constructor; }; }(); /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * githubdb
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * https://github.com/usmakestwo/githubDB
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      *
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Copyright (c) 2017 UsMakesTwo
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * Licensed under the MIT license.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      */
+    defineProperties(Constructor, staticProps); return Constructor; }; }();
+/*
+* githubdb
+* https://github.com/usmakestwo/githubDB
+*
+* Copyright (c) 2017 UsMakesTwo
+* Licensed under the MIT license.
+*/
 /* eslint-disable */
 /*jshint -W027*/
 var _merge = require('merge');

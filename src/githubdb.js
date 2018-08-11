@@ -86,10 +86,9 @@ var getCurrentFile = function getCurrentFile(options) {
       repo: options.repo,
       path: options.path
     }).then(function (res) {
-      console.log((0, _chalk.green)('File located'));
+      console.log((0, _chalk.green)('File located: ' + options.path));
       resolve(res.data);
     }).catch(function (err) {
-      console.log((0, _chalk.red)(err));
       reject(err);
     });
   });
@@ -213,7 +212,6 @@ var Githubdb = function () {
      * Uploads blobs to repo
      * @param {string} data - Data to saved.
      */
-
   }, {
     key: 'save',
     value: function save(data) {
@@ -413,6 +411,27 @@ var Githubdb = function () {
           return _this9._update(collection, res.sha).then(function (res) {
             resolve(res);
           });
+        });
+      });
+    }
+  }, {
+    key: 'createFile',
+    value: function createFile(query, data, options) {
+      var _this10 = this;
+      return new Promise(function (resolve, reject) {
+        github.repos.createFile({
+          owner: _this10.options.owner,
+          repo: _this10.options.repo,
+          path: _this10.options.path,
+          message: 'Create ' + _this10.options.path,
+          content: 'W10=' // base64 encode of empty array
+        }, (err, result) => {
+          if (err) {
+            reject(err);
+          } else {
+            console.log((0, _chalk.green)('New file created: ' + _this10.options.path));
+            resolve(result);
+          }
         });
       });
     }
