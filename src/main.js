@@ -2,6 +2,7 @@
 const Crawler = require('./crawler');
 const DB = require('./db');
 const FundParser = require('./fundparser');
+const DateFormat = require('dateformat');
 
 const c = new Crawler({
     maxConnections : 10,
@@ -11,7 +12,8 @@ const c = new Crawler({
             console.error(error);
         } else {
             const funds = FundParser.parse(res.body);
-            DB.write(funds);
+            const filepath = DateFormat(new Date(), 'yyyy-mm-dd') + '-' + res.options['type'] + '.json';
+            DB.write(funds, filepath);
         }
         done();
     }

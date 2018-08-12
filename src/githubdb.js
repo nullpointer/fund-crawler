@@ -165,6 +165,9 @@ var Githubdb = function () {
         }).then(function (res) {
           console.log((0, _chalk.green)('√ File updated: ' + _this.options.path));
           resolve(res.data);
+        }).catch(function (err) {
+          console.error((0, _chalk.red)('× Faid to update file: ' + _this.options.path));
+          console.error(err.message);
         });
       });
     }

@@ -1,11 +1,8 @@
 'use strict';
 
-const DateFormat = require('dateformat');
 const GithubDB = require('./githubdb');
 
-exports.write = function (data) {
-    const filepath = DateFormat(new Date(), 'yyyy-mm-dd') + '.json';
-
+exports.write = function (data, filepath) {
     const options = {
         owner: 'nullpointer',
         repo: 'fund-data',
