@@ -16,10 +16,23 @@ const c = new Crawler({
             const funds = FundParser.parseRank(res.body);
             const filepath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.json';
             DB.write(funds, filepath);
+
+            if (res.options['type'] === 'all') {
+                writeAllFundCodes(funds);
+            }
         }
         done();
     }
 });
+
+function writeAllFundCodes(funds) {
+    const codes = [];
+    for (let fund of funds) {
+        codes.push(fund['code']);
+    }
+
+    DB.write({codes}, 'allcodes.json');
+}
 
 exports.start = function start() {
     const rankUri = 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=%s&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1'
