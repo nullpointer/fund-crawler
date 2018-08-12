@@ -241,6 +241,9 @@ var Githubdb = function () {
             return res;
           });
         }
+      }).catch(function (err) {
+        console.error((0, _chalk.red)('× Failed to get file content: ' + _this3.options.path));
+        console.error(err.message);
       });
     }
 
