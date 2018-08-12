@@ -15,6 +15,14 @@ Crawler for fund based on nodejs.
 $ npm install --save @nullpointer/fund-crawler
 ```
 
+## Setup Token
+
+As github private will be dismissed when you commit it to the repository, we store the token reversely.
+
+```sh
+$ export TOKEN='reverse string of your github private token'
+```
+
 ## Run
 
 ```sh
