@@ -9,10 +9,10 @@ Crawler for fund based on nodejs.
 - Cloud storage enpowered by [github-db](https://www.npmjs.com/package/github-db)
 
 
-## Install via [npm](https://npmjs.com)
+## Download
 
 ```sh
-$ npm install --save @nullpointer/fund-crawler
+$ git clone https://github.com/nullpointer/fund-crawler
 ```
 
 ## Setup Token
@@ -26,5 +26,6 @@ $ export TOKEN='reverse string of your github private token'
 ## Run
 
 ```sh
+$ npm install
 $ npm start
 ```
