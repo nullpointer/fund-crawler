@@ -20,10 +20,6 @@ const c = new Crawler({
 
 // Queue just one URL, with default callback
 c.queue({
-    uri: 'https://fundapi.eastmoney.com/fundtradenew.aspx',
-    ft: 'pg',
-    sc: '1',
-    st: 'desc',
-    pi: '2',
-    pn: '3000'
+    uri: 'https://fundapi.eastmoney.com/fundtradenew.aspx?ft=pg&sc=1&st=desc&pi=1&pn=3000',
+    ft: 'pg'
 });
