@@ -1,6 +1,6 @@
 'use strict';
 
-exports.parse = function parse(data) {
+exports.parseRank = function parseRank(data) {
     const start = data.indexOf('{');
     const end = data.indexOf('}') + 1;
     const jsonStr = data.slice(start, end);
