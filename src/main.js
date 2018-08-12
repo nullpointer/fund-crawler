@@ -5,8 +5,8 @@ const FundParser = require('./fundparser');
 const DateFormat = require('dateformat');
 
 const c = new Crawler({
-    maxConnections : 10,
-    // This will be called for each crawled page
+    // maxConnections : 10,
+    rateLimit: 1000,
     callback : function (error, res, done) {
         if (error) {
             console.error(error);
