@@ -3,6 +3,7 @@ const Crawler = require('./crawler');
 const DB = require('./db');
 const FundParser = require('./fundparser');
 const DateFormat = require('dateformat');
+const Util = require('util');
 
 const c = new Crawler({
     // maxConnections : 10,
@@ -19,50 +20,52 @@ const c = new Crawler({
     }
 });
 
+const rankUri = 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=%s&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1'
+
 // 全部
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=all&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'all'),
     type: 'all'
 });
 
 // 股票型
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=gp&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'gp'),
     type: 'gupiao'
 });
 
 // 混合型
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=hh&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'hh'),
     type: 'hunhe'
 });
 
 // 债券型
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=zq&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'zq'),
     type: 'zhaiquan'
 });
 
 // 指数型
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=zs&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'zs'),
     type: 'zhishu'
 });
 
 // QDII
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=qdii&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'qdii'),
     type: 'qdii'
 });
 
 // LOF
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=lof&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'lof'),
     type: 'lof'
 });
 
 // FOF
 c.queue({
-    uri: 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=fof&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1',
+    uri: Util.format(rankUri, 'fof'),
     type: 'fof'
 });
