@@ -15,8 +15,8 @@ exports.write = function (data, filepath) {
     githubDB.createFile().then(function () {
         githubDB.save(data);
     }).catch(function () {
-        githubDB.save(data);
-    });;
+        githubDB.save(data, true);
+    });
 }
 
 function getToken() {

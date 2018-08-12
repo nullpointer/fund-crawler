@@ -217,12 +217,12 @@ var Githubdb = function () {
      */
   }, {
     key: 'save',
-    value: function save(data) {
+    value: function save(data, force=false) {
       var _this3 = this;
 
       return getCurrentFile(this.options).then(function (res) {
         var decoded = decode(res.content);
-        var collection = _this3._parse(decoded);
+        var collection = force ? [] : _this3._parse(decoded);
         if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) === 'object' && data.length) {
           if (data.length === 1) {
             if (data[0].length > 0) {
