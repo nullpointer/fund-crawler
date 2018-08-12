@@ -12,8 +12,8 @@ const c = new Crawler({
             console.error(error);
         } else {
             const funds = FundParser.parse(res.body);
-            const filepath = DateFormat(new Date(), 'yyyy-mm-dd') + '-' + res.options['type'] + '.json';
-            DB.write(funds, filepath.replace(/-/g, '/'));
+            const filepath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.json';
+            DB.write(funds, filepath);
         }
         done();
     }
