@@ -13,10 +13,23 @@ exports.write = function (data, filepath) {
     githubDB.auth(getToken());
     githubDB.connectToRepo();
     githubDB.createFile().then(function () {
-        githubDB.save(data);
+        return githubDB.save(data);
     }).catch(function () {
-        githubDB.save(data, true);
+        return githubDB.save(data, true);
     });
+}
+
+exports.read = function (filepath) {
+    const options = {
+        owner: 'nullpointer',
+        repo: 'fund-data',
+        path: filepath
+    };
+
+    const githubDB = new GithubDB(options);
+    githubDB.auth(getToken());
+    githubDB.connectToRepo();
+    return githubDB.find();
 }
 
 function getToken() {
