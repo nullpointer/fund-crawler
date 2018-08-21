@@ -33,5 +33,6 @@ exports.read = function (filepath) {
 }
 
 function getToken() {
-    return process.env.TOKEN.split("").reverse().join("")
+    return process.env.TOKEN;
+    //return process.env.TOKEN.split("").reverse().join("")
 }

@@ -6,8 +6,5 @@ branches:
     - master
 script:
   - npm start
-env:
-  global:
-    - TOKEN="86751d1fa0d3f177b92dec19c103ccf5ae3be56d"
 notifications:
   email: false
