@@ -5,9 +5,8 @@
 Crawler for fund based on nodejs.
 
 - Efficient [crawler](https://www.npmjs.com/package/crawler)
-- Daily running enpowered by [travis-ci](https://travis-ci.com/)
 - Cloud storage enpowered by [github-db](https://www.npmjs.com/package/github-db)
-
+- Daily running enpowered by [travis-ci](https://travis-ci.com/)
 
 ## Download
 
@@ -17,10 +16,10 @@ $ git clone https://github.com/nullpointer/fund-crawler
 
 ## Setup Token
 
-As github private token will be dismissed when you commit it to the repository, we store the token reversely.
+A github personal token is used to manage github API.
 
 ```sh
-$ export TOKEN='reverse string of your github private token'
+$ export TOKEN='Your github personal token'
 ```
 
 ## Run
