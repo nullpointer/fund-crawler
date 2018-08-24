@@ -28,8 +28,7 @@ $ npm start
 >
 > 在Github的开发者设置页<https://github.com/settings/tokens>，可以生成一个**TOKEN**：
 >
-> <div align="center"><img src="./images/fundcrawler-github-token.png" alt="Github Personal
-Access Token"/></div>
+> <div align="center"><img src="./images/1-fundcrawler-github-token.png" alt="Github Personal Access Token"/></div>
 
 天天基金的排行榜可以通过API直接获取，不需要分析网页的结构，请求不同类型基金的API如下所示：
 
@@ -65,8 +64,8 @@ Github可以作为数据存储服务器，在Github上新建一个库(Repository
 
 该爬虫接入了[Travis-CI](https://travis-ci.com/nullpointer/fund-crawler)，配置了定时任务，每天都会自动运行，因此每天爬取的基金数据会自动提交到Github上的数据存储库。
 
-<div align="center"><img src="./images/fundcrawler-travis-ci.png" alt="Travis CI"/></div>
+<div align="center"><img src="./images/2-fundcrawler-travis-ci.png" alt="Travis CI"/></div>
 
 当爬虫执行完毕，所爬取的数据就自动提交到了默认的<https://github.com/nullpointer/fund-data>，截取片段如下所示：
 
-<div align="center"><img src="./images/fundcrawler-fund-data.png" alt="Fund Data"/></div>
+<div align="center"><img src="./images/3-fundcrawler-fund-data.png" alt="Fund Data"/></div>
