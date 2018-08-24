@@ -15,7 +15,7 @@
     "chalk": "^0.4.0",
     "charset-parser": "^0.2.0",
     "cheerio": "^0.22.0",
-    "crawler": "^1.1.4",
+    "crawler": "^1.2.0",
     "dateformat": "^3.0.3",
     "github": "^9.2.0",
     "iconv-lite": "^0.4.8",
