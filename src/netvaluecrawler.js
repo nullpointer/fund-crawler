@@ -13,7 +13,7 @@ const c = new Crawler({
             console.error(error);
         } else {
             const netvalues = FundParser.parseNetValue(res.body);
-            DB.write({netvalues}, res.options['code'] + '.json')
+            DB.write({netvalues}, res.options['code'] + '.json');
         }
         done();
     }
