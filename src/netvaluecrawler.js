@@ -47,8 +47,13 @@ function queueOneCode(code) {
 exports.start = function start() {
     DB.read('allcodes.json').then(function (res) {
         const jsonObj = eval('(' + res + ')');
+
+        const date = new Date().getUTCDate();
         for (let code of jsonObj[0]['codes']) {
-            queueOneCode(code);
+            // Crawler day by day
+            if (code % 31 + 1 === date) {
+                queueOneCode(code);
+            }
         }
     });
 }
