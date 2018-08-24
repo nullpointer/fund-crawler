@@ -3,6 +3,6 @@
 const RankCrawler = require('./rankcrawler');
 const NetValueCrawler = require('./netvaluecrawler');
 
-RankCrawler.start();
+// RankCrawler.start();
 
-// NetValueCrawler.start();
+NetValueCrawler.start();

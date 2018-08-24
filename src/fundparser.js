@@ -1,10 +1,9 @@
 'use strict';
 
-exports.parseRank = function parseRank(data) {
-    const start = data.indexOf('{');
-    const end = data.indexOf('}') + 1;
-    const jsonStr = data.slice(start, end);
-    const jsonObj = eval('(' + jsonStr + ')');
+const cheerio = require('cheerio')
+
+exports.parseRank = function(data) {
+    const jsonObj = parseJsonObject(data);
 
     const fundItems = [];
     for (const item of jsonObj['datas']) {
@@ -28,4 +27,37 @@ exports.parseRank = function parseRank(data) {
         fundItems.push(fundItem);
     }
     return fundItems;
+}
+
+
+exports.parseNetValue = function(data) {
+    const jsonObj = parseJsonObject(data);
+
+    const $ = cheerio.load(jsonObj['content']);
+    const $tbody = $('tbody');
+    const $alltr = $tbody.find('tr');
+    const netvalues = [];
+    $alltr.each(function() {
+        const netvalue = [];
+        $(this).find('td').each(function() {
+            netvalue.push($(this).text());
+        })
+        netvalues.push(netvalue);
+    })
+    return netvalues;
+}
+
+exports.parseNumOfNetValueRecord = function(data) {
+    const jsonObj = parseJsonObject(data);
+    return jsonObj['records'];
+}
+
+
+function parseJsonObject(data) {
+    const start = data.indexOf('{');
+    const end = data.indexOf('}') + 1;
+    const jsonStr = data.slice(start, end);
+    const jsonObj = eval('(' + jsonStr + ')');
+
+    return jsonObj
 }

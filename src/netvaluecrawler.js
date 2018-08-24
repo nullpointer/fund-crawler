@@ -2,32 +2,51 @@
 
 const Crawler = require('./crawler');
 const DB = require('./db');
+const FundParser = require('./fundparser');
 const Util = require('util');
-
 
 const c = new Crawler({
     // maxConnections : 10,
-    rateLimit: 1000,
+    rateLimit: 2000,
     callback : function (error, res, done) {
         if (error) {
             console.error(error);
         } else {
-            console.log(res.body);
+            const netvalues = FundParser.parseNetValue(res.body);
+            DB.write({netvalues}, res.options['code'] + '.json')
         }
         done();
     }
 });
 
+function queueOneCode(code) {
+    const uri = "http://fund.eastmoney.com/f10/F10DataApi.aspx?type=lsjz&code=%s&page=1&per=%s"
+    c.queue({
+        url: Util.format(uri, code, 1),
+        callback: function (error, res, done) {
+            if (error) {
+                console.error(error);
+            } else {
+                // Get records
+                const records = FundParser.parseNumOfNetValueRecord(res.body);
+                if (records && records > 0) {
+                    // Get all net value
+                    c.queue({
+                        url: Util.format(uri, code, records),
+                        code: code
+                    });
+                }
+            }
+            done();
+        }
+    });
+}
+
 exports.start = function start() {
-    const uri = 'http://fundf10.eastmoney.com/jjjz_%s.html'
     DB.read('allcodes.json').then(function (res) {
         const jsonObj = eval('(' + res + ')');
-        let url;
         for (let code of jsonObj[0]['codes']) {
-            url = Util.format(uri, code);
+            queueOneCode(code);
         }
-
-        console.log(url);
-        c.queue(url);
     });
 }
