@@ -7,7 +7,7 @@ const Util = require('util');
 
 const c = new Crawler({
     // maxConnections : 10,
-    rateLimit: 2000,
+    rateLimit: 1000,
     callback : function (error, res, done) {
         if (error) {
             console.error(error);
