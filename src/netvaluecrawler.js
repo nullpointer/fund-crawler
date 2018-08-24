@@ -40,6 +40,8 @@ function queueOneCode(code) {
             done();
         }
     });
+
+    console.info(code + " queued.");
 }
 
 exports.start = function start() {
