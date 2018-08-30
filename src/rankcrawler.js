@@ -5,6 +5,7 @@ const DB = require('./db');
 const FundParser = require('./fundparser');
 const DateFormat = require('dateformat');
 const Util = require('util');
+const Analyzer = require('./fundanalyzer');
 
 const c = new Crawler({
     // maxConnections : 10,
@@ -16,6 +17,10 @@ const c = new Crawler({
             const funds = FundParser.parseRank(res.body);
             const filepath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.json';
             DB.write(funds, filepath);
+
+            const recommendFunds = Analyzer.analyze(funds);
+            const recommendPath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.recommend.json';
+            DB.write(recommendFunds, recommendPath);
 
             if (res.options['type'] === 'all') {
                 writeAllFundCodes(funds);
