@@ -34,8 +34,7 @@ $ npm start
 >
 > 在Github的开发者设置页<https://github.com/settings/tokens>，可以生成一个**TOKEN**：
 >
-> <div align="center"><img src="./images/1-fundcrawler-github-token.png" alt="Github Personal
-Access Token"/></div>
+> <div align="center"><img src="./images/1-fundcrawler-github-token.png" alt="Github Personal Access Token"/></div>
 
 本爬虫要爬取的数据有两种：
 
