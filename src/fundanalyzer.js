@@ -1,7 +1,5 @@
 'use strict';
 
-const request = require('request');
-
 exports.analyze = function(funds) {
     let recent3Month = funds.sort(sortFundByRecent3Month);
     recent3Month = recent3Month.slice(0, recent3Month.length / 3);
@@ -40,6 +38,23 @@ exports.analyze = function(funds) {
 
     intersect = intersect.filter(function (fund) {
         return fromBuild.indexOf(fund) >= 0;
+    });
+
+    intersect.forEach(fund => {
+        const rank3Month = recent3Month.indexOf(fund);
+        const rank6Month = recent6Month.indexOf(fund);
+        const rank1Year = recent1Year.indexOf(fund);
+        const rank2Year = recent2Year.indexOf(fund);
+        const rank3Year = recent3Year.indexOf(fund);
+        const rankFromBuild = fromBuild.indexOf(fund);
+
+        const total = funds.length;
+        fund['rank3Month'] = rank3Month + '/' + total;
+        fund['rank6Month'] = rank6Month + '/' + total;
+        fund['rank1Year'] = rank1Year + '/' + total;
+        fund['rank2Year'] = rank2Year + '/' + total;
+        fund['rank3Year'] = rank3Year + '/' + total;
+        fund['rankFromBuild'] = rankFromBuild + '/' + total;
     });
 
     return intersect;
