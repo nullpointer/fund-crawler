@@ -48,13 +48,13 @@ exports.analyze = function(funds) {
         const rank3Year = recent3Year.indexOf(fund);
         const rankFromBuild = fromBuild.indexOf(fund);
 
-        const total = funds.length;
-        fund['rank3Month'] = rank3Month + '/' + total;
-        fund['rank6Month'] = rank6Month + '/' + total;
-        fund['rank1Year'] = rank1Year + '/' + total;
-        fund['rank2Year'] = rank2Year + '/' + total;
-        fund['rank3Year'] = rank3Year + '/' + total;
-        fund['rankFromBuild'] = rankFromBuild + '/' + total;
+        fund['rank3Month'] = rank3Month;
+        fund['rank6Month'] = rank6Month;
+        fund['rank1Year'] = rank1Year;
+        fund['rank2Year'] = rank2Year;
+        fund['rank3Year'] = rank3Year;
+        fund['rankFromBuild'] = rankFromBuild;
+        fund['totalFunds'] = funds.length;
     });
 
     return intersect;
