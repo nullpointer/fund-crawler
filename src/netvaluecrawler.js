@@ -45,6 +45,13 @@ function queueOneCode(code) {
     console.info(code + " queued.");
 }
 
+function pause(millis) {
+    var date = new Date();
+    var curDate = null;
+    do { curDate = new Date(); }
+    while (curDate - date < millis);
+}
+
 exports.start = function start() {
     DB.read('allcodes.json').then(function (res) {
         const jsonObj = eval('(' + res + ')');
@@ -54,6 +61,7 @@ exports.start = function start() {
             // Crawler day by day
             if (code % 31 + 1 === date) {
                 queueOneCode(code);
+                pause(1000); // Slow down
             }
         }
     });
