@@ -15,6 +15,8 @@ const c = new Crawler({
             const netvalues = FundParser.parseNetValue(res.body);
             const filepath = 'funds/' + res.options['code'] + '.json';
             DB.write({netvalues}, filepath);
+
+            pause(3000); // Slow down
         }
         done();
     }
@@ -61,7 +63,6 @@ exports.start = function start() {
             // Crawler day by day
             if (code % 31 + 1 === date) {
                 queueOneCode(code);
-                pause(1000); // Slow down
             }
         }
     });
