@@ -18,13 +18,13 @@ const c = new Crawler({
             const filepath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.json';
             DB.write(funds, filepath);
 
-            pause(1000); // Slow down
+            pause(funds.length << 2); // Slow down
 
             const recommendFunds = Analyzer.analyze(funds);
             const recommendPath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.recommend.json';
             DB.write(recommendFunds, recommendPath);
 
-            pause(1000); // Slowdown
+            pause(recommendFunds.length << 2); // Slowdown
 
             if (res.options['type'] === 'all') {
                 writeAllFundCodes(funds);
@@ -35,6 +35,10 @@ const c = new Crawler({
 });
 
 function pause(millis) {
+    if (millis < 1000) {
+        millis = 1000;
+    }
+
     var date = new Date();
     var curDate = null;
     do { curDate = new Date(); }
@@ -48,6 +52,7 @@ function writeAllFundCodes(funds) {
     }
 
     DB.write({codes}, 'allcodes.json');
+    pause(codes.length);
 }
 
 exports.start = function start() {

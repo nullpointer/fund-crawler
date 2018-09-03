@@ -16,7 +16,7 @@ const c = new Crawler({
             const filepath = 'funds/' + res.options['code'] + '.json';
             DB.write({netvalues}, filepath);
 
-            pause(3000); // Slow down
+            pause(netvalues.length << 2); // Slow down
         }
         done();
     }
