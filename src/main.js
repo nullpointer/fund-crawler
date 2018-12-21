@@ -5,4 +5,4 @@ const NetValueCrawler = require('./netvaluecrawler');
 
 RankCrawler.start();
 
-NetValueCrawler.start();
+// NetValueCrawler.start();

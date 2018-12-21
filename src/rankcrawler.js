@@ -18,13 +18,9 @@ const c = new Crawler({
             const filepath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.json';
             DB.write(funds, filepath);
 
-            pause(funds.length << 4); // Slow down
-
             const recommendFunds = Analyzer.analyze(funds);
             const recommendPath = DateFormat(new Date(), 'yyyy/mm/dd') + '/' + res.options['type'] + '.recommend.json';
             DB.write(recommendFunds, recommendPath);
-
-            pause(recommendFunds.length << 4); // Slow down
 
             if (res.options['type'] === 'all') {
                 writeAllFundCodes(funds);
