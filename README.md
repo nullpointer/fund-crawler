@@ -7,7 +7,7 @@
 
 笔者实现了一个应用，依据上述法则筛选基金，降低广大基民踩雷的风险。
 
-本应用包含**数据爬虫**、**数据存储**和**数据展示**三个模块。本应用并没有采用传统的SQL作为数据库存储，而是直接利用Github作为数据存储服务器，并且利用[Travis-ci](https://travis-ci.com/nullpointer/fund-crawler)的持续集成功能定时调度爬虫任务，前端展示的域名和伺服也是利用Github提供的gh-pages功能。因此，本应用是一个前后端都寄生在**Github**和**Travis-ci**的**`免费应用`**。
+本应用包含**数据爬虫**、**数据存储**和**数据展示**三个模块。本应用并没有采用传统的SQL作为数据库存储，而是直接利用Github作为数据存储服务器，并且利用[Travis-ci](https://travis-ci.com/nullpointer/fund-crawler)的持续集成功能定时调度爬虫任务，前端展示的域名和伺服也是利用Github提供的gh-pages功能。因此，本应用是一个前后端都寄生在**Github**和**Travis-ci**的`免费应用`。
 架构图如下所示：
 
 <div align="center"><img src="./images/0-fundcrawler-architecture.png" alt="Fund Crawler Architecture"/></div>
