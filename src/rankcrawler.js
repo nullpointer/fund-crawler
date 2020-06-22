@@ -9,6 +9,7 @@ const Analyzer = require('./fundanalyzer');
 
 const c = new Crawler({
     // maxConnections : 10,
+    referer: "http://fund.eastmoney.com",
     rateLimit: 1000,
     callback : function (error, res, done) {
         if (error) {
