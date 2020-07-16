@@ -20,7 +20,7 @@
     "github": "^9.2.0",
     "iconv-lite": "^0.4.8",
     "javascript-to-typescript": "^1.0.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "merge": ">=1.2.1",
     "request": "~2.87.0",
     "seenreq": "^1.0.2",
