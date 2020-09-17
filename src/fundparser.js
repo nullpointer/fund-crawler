@@ -8,7 +8,7 @@ exports.parseRank = function(data) {
     const fundItems = [];
     for (const item of jsonObj['datas']) {
         let fundItem = {};
-        const fundArray = item.split(',');
+        const fundArray = item.split('|');
         fundItem['code'] = fundArray[0];
         fundItem['name'] = fundArray[1];
         fundItem['day'] = fundArray[3];

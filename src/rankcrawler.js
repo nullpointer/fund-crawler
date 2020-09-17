@@ -48,9 +48,9 @@ function writeAllFundCodes(funds) {
 }
 
 exports.start = function start() {
-    const rankUri = 'http://fund.eastmoney.com/data/rankhandler.aspx?op=ph&dt=kf&ft=%s&rs=&gs=0&sc=zzf&st=desc&pi=1&pn=10000&dx=1'
+    const rankUri = "https://fundapi.eastmoney.com/fundtradenew.aspx?ft=%s&pi=1&pn=10000"
 
-    c.queue({ uri: Util.format(rankUri, 'all'), type: 'all' }); // 全部
+    // c.queue({ uri: Util.format(rankUri, 'all'), type: 'all' }); // 全部
     c.queue({ uri: Util.format(rankUri, 'gp'), type: 'gupiao' }); // 股票型
     c.queue({ uri: Util.format(rankUri, 'hh'), type: 'hunhe' }); // 混合型
     c.queue({ uri: Util.format(rankUri, 'zq'), type: 'zhaiquan' }); // 债券型
