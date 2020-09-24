@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+  - stable
+branches:
+  only:
+    - master
+script:
+  - yarn run start
+notifications:
+  email: false

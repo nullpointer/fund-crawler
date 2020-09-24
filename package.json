@@ -1,0 +1,20 @@
+{
+  "name": "fund-crawler",
+  "version": "2.0.0",
+  "description": "fund crawler",
+  "main": "src/main.js",
+  "author": "duanqz",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.0.6",
+    "chalk": "^4.1.0",
+    "cheerio": "^0.22.0",
+    "crawler": "^1.2.2",
+    "dateformat": "^3.0.3"
+  },
+  "devDependencies": {
+  }
+}
