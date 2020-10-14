@@ -130,7 +130,7 @@ class Scheduler {
     schedule(task) {
         if (!task.success && task.tryTimes < 3) {
             task.tryTimes++
-            Log.info('Schedule task ' + task.uri + ', try times = ' + task.tryTimes)
+            Log.info('Schedule REQ task ' + task.uri + ', try times = ' + task.tryTimes)
             this.crawler.queue({ uri: task.uri, headers: task.headers, task: task })
         }
     }

@@ -8,7 +8,7 @@ function getGitHubPersonalAccessToken() {
 
 const githubDB = new GitHubDB({
     auth: getGitHubPersonalAccessToken(),
-    owner: 'nullpointer',
+    owner: 'fundvis',
     repo: 'fund-data',
     user: { name: 'duanqz', email: 'duanqz@gmail.com' }
 })
