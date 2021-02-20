@@ -44,7 +44,7 @@ class Task {
 
         // Init store path
         var now = DateFormat(new Date(), 'yyyy/mm/dd')
-        this.storePath = now + '/theme.' + Task._fixType(type) + '.json'
+        this.storePath = now + '/theme.json'
 
         this.tryTimes = 0
     }
