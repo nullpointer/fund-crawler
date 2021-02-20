@@ -29,7 +29,7 @@ exports.parseRank = function(data) {
 
 exports.parseFundTheme = function(data) {
     const jsonObj = parseJsonObject(data);
-    return jsonObj;
+    return jsonObj['Data'];
 }
 
 function parseJsonObject(data) {
