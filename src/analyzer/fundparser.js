@@ -1,7 +1,5 @@
 'use strict';
 
-const cheerio = require('cheerio')
-
 exports.parseRank = function(data) {
     const jsonObj = parseJsonObject(data);
 
@@ -29,35 +27,16 @@ exports.parseRank = function(data) {
     return fundItems;
 }
 
-
-exports.parseNetValue = function(data) {
+exports.parseFundTheme = function(data) {
     const jsonObj = parseJsonObject(data);
-
-    const $ = cheerio.load(jsonObj['content']);
-    const $tbody = $('tbody');
-    const $alltr = $tbody.find('tr');
-    const netvalues = [];
-    $alltr.each(function() {
-        const netvalue = [];
-        $(this).find('td').each(function() {
-            netvalue.push($(this).text());
-        })
-        netvalues.push(netvalue);
-    })
-    return netvalues;
+    return jsonObj;
 }
-
-exports.parseNumOfNetValueRecord = function(data) {
-    const jsonObj = parseJsonObject(data);
-    return jsonObj['records'];
-}
-
 
 function parseJsonObject(data) {
     const start = data.indexOf('{');
-    const end = data.indexOf('}') + 1;
+    const end = data.lastIndexOf('}') + 1;
     const jsonStr = data.slice(start, end);
     const jsonObj = eval('(' + jsonStr + ')');
 
-    return jsonObj
+    return jsonObj 
 }

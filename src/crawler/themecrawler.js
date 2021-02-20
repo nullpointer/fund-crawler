@@ -11,7 +11,6 @@ const Log = require('../log');
 const { subtract } = require('lodash');
 
 // Crawl url
-// const themeUri = "http://fund.eastmoney.com/ztjj/#!syl/SYL_W"
 const themeUri = "http://api.fund.eastmoney.com/ztjj/GetZTJJList?callback=jQuery183034382836069271905_1613810977162&tt=0&dt=syl&st=%s&_=%s"
 const userAgents = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36',
@@ -122,8 +121,8 @@ class Scheduler {
                     Log.success('Succeed to crawl ' + res.options.uri)
 
                     const filepath = res.options.task.storePath;
-                    const themes = FundParser.parseTheme(res.body);
-                    // DB.write(filepath, funds)
+                    const themes = FundParser.parseFundTheme(res.body);
+                    DB.write(filepath, themes)
                 }
 
                 done()
