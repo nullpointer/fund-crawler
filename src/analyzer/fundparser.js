@@ -27,6 +27,30 @@ exports.parseRank = function(data) {
     return fundItems;
 }
 
+exports.parseHKRank = function(data) {
+    const jsonObj = parseJsonObject(data);
+    const fundItems = [];
+    for (const item of jsonObj['Data']) {
+        let fundItem = {};
+        fundItem['code'] = item['FCODE'];
+        fundItem['name'] = item['SHORTNAME'];
+        fundItem['day'] = item['JZRQ'];
+        fundItem['unitNetWorth'] = item['NAV'];
+        fundItem['dayOfGrowth'] = item['D'];
+        fundItem['recent1Week'] = item['W'];
+        fundItem['recent1Month'] = item['M'];
+        fundItem['recent3Month'] = item['Q'];
+        fundItem['recent6Month'] = item['HY'];
+        fundItem['recent1Year'] = item['Y'];
+        fundItem['recent2Year'] = item['TWY'];
+        fundItem['recent3Year'] = item['TRY'];
+        fundItem['fromThisYear'] = item['SY'];
+        fundItem['fromBuild'] = item['SE'];
+        fundItems.push(fundItem);
+    }
+    return fundItems;
+}
+
 exports.parseFundTheme = function(data) {
     const jsonObj = parseJsonObject(data);
     return jsonObj['Data'];
