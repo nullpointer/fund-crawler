@@ -1,9 +1,11 @@
 'use strict';
 
-const RankCrawler = require('./crawler/rankcrawler');
-const HKRankCrawler = require('./crawler/hkrankcrawler');
-const ThemeCrawler = require('./crawler/themecrawler')
+const FundRankCrawler = require('./crawler/fundrankcrawler')
+const HKFundRankCrawler = require('./crawler/hkfundrankcrawler')
+const FundThemeCrawler = require('./crawler/fundthemecrawler')
+const StockCrawler = require('./crawler/stockcrawler')
 
-RankCrawler.start();
-HKRankCrawler.start();
-ThemeCrawler.start();
+// FundRankCrawler.start()
+// HKFundRankCrawler.start()
+// FundThemeCrawler.start()
+StockCrawler.start()
