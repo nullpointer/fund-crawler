@@ -1,5 +1,4 @@
 const { Octokit } = require('@octokit/rest');
-const { parseHTML } = require('cheerio');
 const Log = require('../log')
 
 class GitHubDB {

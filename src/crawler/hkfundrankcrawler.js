@@ -3,6 +3,8 @@
 const {Task, TaskQueue, Scheduler} = require('./scheduler')
 const Analyzer = require('../analyzer/fundanalyzer');
 
+// Page: http://overseas.1234567.com.cn/FundList
+
 // Crawl url
 const hkRankUri = "http://overseas.1234567.com.cn/overseasapi/OpenApiHander.ashx?api=HKFDApi&m=MethodFundList&action=1&pageindex=0&pagesize=50&dy=1&date1=2020-02-23&date2=2021-02-23&sortfield=W&sorttype=-1&isbuy=0&callback=jQuery18307391053966150833_1614082770915&_=%s"
 

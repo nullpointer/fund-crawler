@@ -4,6 +4,7 @@ const {Task, TaskQueue, Scheduler} = require('./scheduler')
 const Analyzer = require('../analyzer/fundanalyzer');
 const Util = require('util');
 
+// Page: http://fund.eastmoney.com/data/fundranking.html
 
 // Crawl url
 const rankUri = "https://fundapi.eastmoney.com/fundtradenew.aspx?ft=%s&pi=1&pn=10000"
