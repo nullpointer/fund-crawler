@@ -59,7 +59,8 @@ exports.analyze = function(funds) {
         const rank3Year = recent3Year.indexOf(fund) + 1;
         const rankFromBuild = fromBuild.indexOf(fund) + 1;
 
-        fund['rank1Month'] = rank1Week;
+        fund['rank1Week'] = rank1Week;
+        fund['rank1Month'] = rank1Month;
         fund['rank3Month'] = rank3Month;
         fund['rank6Month'] = rank6Month;
         fund['rank1Year'] = rank1Year;
