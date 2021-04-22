@@ -6,7 +6,7 @@ const DB = require('../db')
 const Log = require('../log')
 
 class Scheduler {
-    constructor(taskQueue, parser = null) {
+    constructor(taskQueue, parser = null, analyzer = null) {
         this.tryTimes = 0
 
         var self = this
@@ -25,10 +25,16 @@ class Scheduler {
                 } else {
                     Log.success('Succeed to crawl ' + res.options.uri)
 
-                    const filepath = res.options.task.storePath
+                    const storePath = res.options.task.storePath
                     if (parser instanceof Function) {
                         const result = parser(res.body)
-                        DB.write(filepath, result)
+                        DB.write(storePath, result)
+
+                        if (analyzer instanceof Function) {
+                            const recommendResult = analyzer(result);
+                            const recommendStorePath = res.options.task.recommendStorePath
+                            DB.write(recommendStorePath, recommendResult)
+                        }
                     }
                 }
 
