@@ -15,6 +15,5 @@
     "crawler": "^1.2.2",
     "dateformat": "^3.0.3"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

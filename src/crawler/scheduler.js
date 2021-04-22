@@ -1,11 +1,12 @@
 'use strict'
 
+const DateFormat = require('dateformat');
 const Crawler = require('crawler')
 const DB = require('../db')
 const Log = require('../log')
 
 class Scheduler {
-    constructor(taskQueue, parser) {
+    constructor(taskQueue, parser = null) {
         this.tryTimes = 0
 
         var self = this
@@ -25,8 +26,10 @@ class Scheduler {
                     Log.success('Succeed to crawl ' + res.options.uri)
 
                     const filepath = res.options.task.storePath
-                    const result = parser(res.body)
-                    DB.write(filepath, result)
+                    if (parser instanceof Function) {
+                        const result = parser(res.body)
+                        DB.write(filepath, result)
+                    }
                 }
 
                 done()
@@ -50,8 +53,8 @@ class Scheduler {
 }
 
 class TaskQueue {
-    constructor() {
-        this.tasks = []
+    constructor(tasks = []) {
+        this.tasks = tasks
     }
 
     list() {
@@ -82,34 +85,26 @@ const userAgents = [
 
 class Task {
 
-    constructor() {
-        this.tryTimes = 0
-    }
+    constructor(key, uri, headers = {}) {
+        // init store path with key
+        var now = DateFormat(new Date(), 'yyyy/mm/dd')
+        this.storePath = now + '/' + key + '.json'
+        this.recommendStorePath = now + '/' + key + '.recommend.json'
 
-    static create() {
-        let task = Task()
-        return task;
-    }
-
-    setKey(key) {
-        this.key = key
-    }
-
-    setUri(uri) {
         this.uri = uri
-    }
 
-    setStorepath(storePath) {
-        this.storePath = storePath
-    }
-
-    setHeaders(headers) {
+        // init headers with random userAgent
         let userAgent = userAgents[Task.getRandomInt(userAgents.length)]
         headers['User-Agent'] = userAgent
         this.headers = headers
+
+        this.tryTimes = 0
     }
 
     static getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
     }
 }
+
+
+module.exports = { Task, TaskQueue, Scheduler }
