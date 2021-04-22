@@ -29,6 +29,8 @@ function parseRank1(data) {
         fundItem['recent1Year'] = fundArray[9]
         fundItem['recent2Year'] = fundArray[10]
         fundItem['recent3Year'] = fundArray[11]
+        fundItem['day'] = fundArray[15]
+        fundItem['unitNetWorth'] = fundArray[16]
         fundItems.push(fundItem)
     }
     return fundItems
