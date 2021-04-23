@@ -29,7 +29,7 @@ exports.analyze = function(funds) {
         return recent3Month.indexOf(fund) >= 0;
     });
 
-    intersect = recent3Month.filter(function (fund) {
+    intersect = intersect.filter(function (fund) {
         return recent6Month.indexOf(fund) >= 0;
     });
 
