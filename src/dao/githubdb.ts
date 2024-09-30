@@ -1,40 +1,49 @@
-const { Octokit } = require('@octokit/rest');
-const Log = require('../log')
+import { Octokit } from '@octokit/rest';
+import Log from '../log';
+
+interface Options {
+    auth: string;
+    owner: string;
+    repo: string;
+    user: string;
+}
 
 class GitHubDB {
+    private options: Options;
+    private octokit: Octokit;
 
-    constructor(options) {
-        this.options = options
+    constructor(options: Options) {
+        this.options = options;
         this.octokit = new Octokit({
             auth: options.auth
         });
     }
 
-    writeFileContent(path, content) {
+    writeFileContent(path: string, content: any[]): Promise<any> {
         return this.ensureFileExits(path).then(sha => {
             return this.updateFileContents(path, sha, content);
-        })
+        });
     }
 
-    ensureFileExits(path) {
+    ensureFileExits(path: string): Promise<string> {
         return this.getFileSha(path).catch(_ => {
-            return this.createFile(path)
-        })
+            return this.createFile(path);
+        });
     }
 
-    getFileSha(path) {
+    getFileSha(path: string): Promise<string> {
         return this.getContent(path).then(response => {
             if (response.status >= 200 && response.status < 300) {
-                return Promise.resolve(response.data.sha)
+                return Promise.resolve(response.data.sha);
             } else {
-                return Promise.reject()
+                return Promise.reject();
             }
         }).catch(_ => {
-            return Promise.reject()
-        })
+            return Promise.reject();
+        });
     }
 
-    getContent(path) {
+    getContent(path: string): Promise<any> {
         return this.octokit.repos.getContent({
             owner: this.options.owner,
             repo: this.options.repo,
@@ -42,7 +51,7 @@ class GitHubDB {
         });
     }
 
-    createFile(path) {
+    createFile(path: string): Promise<string> {
         return this.octokit.repos.createOrUpdateFileContents({
             owner: this.options.owner,
             repo: this.options.repo,
@@ -52,41 +61,42 @@ class GitHubDB {
             committer: this.options.user,
             author: this.options.user
         }).then(_ => {
-            Log.info('Create file: ' + path)
-            return this.getFileSha(path)
+            Log.info('Create file: ' + path);
+            return this.getFileSha(path);
         }).catch(err => {
-            Log.error('Failed to create file: ' + path + ' err: ' + err)
-            return Promise.reject(err)
-        })
+            Log.error('Failed to create file: ' + path + ' err: ' + err);
+            return Promise.reject(err);
+        });
     }
 
-    updateFileContents(path, sha, content = []) {
+    updateFileContents(path: string, sha: string, content: any[] = []): Promise<any> {
         return this.octokit.repos.createOrUpdateFileContents({
             owner: this.options.owner,
             repo: this.options.repo,
             path: path,
             message: 'File updated at ' + this._timestamp(),
             content: this._encodeBase64(content),
-            sha: sha, 	// Required if you are updating a file.
+            sha: sha,  // Required if you are updating a file.
             committer: this.options.user,
             author: this.options.user
         }).catch(err => {
-            return Promise.reject(err)
-        })
+            return Promise.reject(err);
+        });
     }
 
-    _encodeBase64(content) {
+    private _encodeBase64(content: any): string {
         return Buffer.from(JSON.stringify(content)).toString('base64');
-      };
+    }
 
-    _decodeBase64(content) {
+    private _decodeBase64(content: string): string {
         return Buffer.from(content, 'base64').toString('utf8');
-      };
+    }
 
-    _timestamp() {
-        var timestamped = new Date().toUTCString();
+    private _timestamp(): string {
+        const timestamped = new Date().toUTCString();
         return timestamped;
     }
 }
 
-module.exports = { GitHubDB }
+export { GitHubDB };
+

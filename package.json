@@ -15,5 +15,7 @@
     "crawler": "^2.0.2",
     "dateformat": "^3.0.3"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
 }
