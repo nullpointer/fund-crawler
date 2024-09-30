@@ -9,10 +9,10 @@
     "start": "node src/main.js"
   },
   "dependencies": {
-    "@octokit/rest": "^18.0.6",
-    "chalk": "^4.1.0",
-    "cheerio": "^0.22.0",
-    "crawler": "^1.2.2",
+    "@octokit/rest": "^21.0.2",
+    "chalk": "^5.3.0",
+    "cheerio": "^1.0.0",
+    "crawler": "^2.0.2",
     "dateformat": "^3.0.3"
   },
   "devDependencies": {}
