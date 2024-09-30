@@ -2,11 +2,12 @@
   "name": "fund-crawler",
   "version": "2.0.0",
   "description": "fund crawler",
-  "main": "src/main.js",
+  "main": "src/main.ts",
+  "type": "module",
   "author": "duanqz",
   "license": "MIT",
   "scripts": {
-    "start": "node src/main.js"
+    "start": "node src/main.ts"
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",
